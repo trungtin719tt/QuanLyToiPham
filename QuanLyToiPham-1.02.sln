@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuanLyToiPham-1.02", "QuanLyToiPham-1.02\QuanLyToiPham-1.02.csproj", "{F839CA06-C0A4-47C6-968C-2BAB2408147E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{89540944-298D-4C53-8C6F-0B7FDDCDDC6D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{F839CA06-C0A4-47C6-968C-2BAB2408147E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F839CA06-C0A4-47C6-968C-2BAB2408147E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F839CA06-C0A4-47C6-968C-2BAB2408147E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89540944-298D-4C53-8C6F-0B7FDDCDDC6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89540944-298D-4C53-8C6F-0B7FDDCDDC6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89540944-298D-4C53-8C6F-0B7FDDCDDC6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89540944-298D-4C53-8C6F-0B7FDDCDDC6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

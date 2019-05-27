@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ProfileDatabaseModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=D:\Tin\VoHoang\QuanLyToiPham-1.02\QuanLyToiPham\QuanLyToiPham-1.02\SQLite\ProfileDatabase.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Criminal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProfileID" Type="integer" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="CommitedDate" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Family">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProfileID" Type="integer" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="CurrentAddress" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="Relationship" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="IsActive" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Picture">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProfileID" Type="integer" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Profile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="Type" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="DoB" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="Household" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="CurrentAddress" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="Area" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="Characteristics" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="CreatedDate" Type="integer" />
+          <Property Name="IsActive" Type="integer" />
+        </EntityType>
+        <Association Name="FK_Criminal_0_0">
+          <End Role="Profile" Type="Self.Profile" Multiplicity="1" />
+          <End Role="Criminal" Type="Self.Criminal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Criminal">
+              <PropertyRef Name="ProfileID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Family_0_0">
+          <End Role="Profile" Type="Self.Profile" Multiplicity="1" />
+          <End Role="Family" Type="Self.Family" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Family">
+              <PropertyRef Name="ProfileID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Picture_0_0">
+          <End Role="Profile" Type="Self.Profile" Multiplicity="1" />
+          <End Role="Picture" Type="Self.Picture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Picture">
+              <PropertyRef Name="ProfileID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProfileDatabaseModelStoreContainer">
+          <EntitySet Name="Criminal" EntityType="Self.Criminal" store:Type="Tables" />
+          <EntitySet Name="Family" EntityType="Self.Family" store:Type="Tables" />
+          <EntitySet Name="Picture" EntityType="Self.Picture" store:Type="Tables" />
+          <EntitySet Name="Profile" EntityType="Self.Profile" store:Type="Tables" />
+          <AssociationSet Name="FK_Criminal_0_0" Association="Self.FK_Criminal_0_0">
+            <End Role="Profile" EntitySet="Profile" />
+            <End Role="Criminal" EntitySet="Criminal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Family_0_0" Association="Self.FK_Family_0_0">
+            <End Role="Profile" EntitySet="Profile" />
+            <End Role="Family" EntitySet="Family" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Picture_0_0" Association="Self.FK_Picture_0_0">
+            <End Role="Profile" EntitySet="Profile" />
+            <End Role="Picture" EntitySet="Picture" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProfileDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Criminal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProfileID" Type="Int64" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CommitedDate" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Profile" Relationship="Self.FK_Criminal_0_0" FromRole="Criminal" ToRole="Profile" />
+        </EntityType>
+        <EntityType Name="Family">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProfileID" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CurrentAddress" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Relationship" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Profile" Relationship="Self.FK_Family_0_0" FromRole="Family" ToRole="Profile" />
+        </EntityType>
+        <EntityType Name="Picture">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProfileID" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Profile" Relationship="Self.FK_Picture_0_0" FromRole="Picture" ToRole="Profile" />
+        </EntityType>
+        <EntityType Name="Profile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="DoB" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="Household" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="CurrentAddress" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="Characteristics" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="Int64" />
+          <Property Name="IsActive" Type="Int64" />
+          <NavigationProperty Name="Criminals" Relationship="Self.FK_Criminal_0_0" FromRole="Profile" ToRole="Criminal" />
+          <NavigationProperty Name="Families" Relationship="Self.FK_Family_0_0" FromRole="Profile" ToRole="Family" />
+          <NavigationProperty Name="Pictures" Relationship="Self.FK_Picture_0_0" FromRole="Profile" ToRole="Picture" />
+          <Property Name="Area" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Criminal_0_0">
+          <End Role="Profile" Type="Self.Profile" Multiplicity="1" />
+          <End Role="Criminal" Type="Self.Criminal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Criminal">
+              <PropertyRef Name="ProfileID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Family_0_0">
+          <End Role="Profile" Type="Self.Profile" Multiplicity="1" />
+          <End Role="Family" Type="Self.Family" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Family">
+              <PropertyRef Name="ProfileID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Picture_0_0">
+          <End Role="Profile" Type="Self.Profile" Multiplicity="1" />
+          <End Role="Picture" Type="Self.Picture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Picture">
+              <PropertyRef Name="ProfileID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Criminals" EntityType="Self.Criminal" />
+          <EntitySet Name="Families" EntityType="Self.Family" />
+          <EntitySet Name="Pictures" EntityType="Self.Picture" />
+          <EntitySet Name="Profiles" EntityType="Self.Profile" />
+          <AssociationSet Name="FK_Criminal_0_0" Association="Self.FK_Criminal_0_0">
+            <End Role="Profile" EntitySet="Profiles" />
+            <End Role="Criminal" EntitySet="Criminals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Family_0_0" Association="Self.FK_Family_0_0">
+            <End Role="Profile" EntitySet="Profiles" />
+            <End Role="Family" EntitySet="Families" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Picture_0_0" Association="Self.FK_Picture_0_0">
+            <End Role="Profile" EntitySet="Profiles" />
+            <End Role="Picture" EntitySet="Pictures" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProfileDatabaseModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Criminals">
+            <EntityTypeMapping TypeName="ProfileDatabaseModel.Criminal">
+              <MappingFragment StoreEntitySet="Criminal">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProfileID" ColumnName="ProfileID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CommitedDate" ColumnName="CommitedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Families">
+            <EntityTypeMapping TypeName="ProfileDatabaseModel.Family">
+              <MappingFragment StoreEntitySet="Family">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProfileID" ColumnName="ProfileID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CurrentAddress" ColumnName="CurrentAddress" />
+                <ScalarProperty Name="Relationship" ColumnName="Relationship" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pictures">
+            <EntityTypeMapping TypeName="ProfileDatabaseModel.Picture">
+              <MappingFragment StoreEntitySet="Picture">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProfileID" ColumnName="ProfileID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Profiles">
+            <EntityTypeMapping TypeName="ProfileDatabaseModel.Profile">
+              <MappingFragment StoreEntitySet="Profile">
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="DoB" ColumnName="DoB" />
+                <ScalarProperty Name="Household" ColumnName="Household" />
+                <ScalarProperty Name="CurrentAddress" ColumnName="CurrentAddress" />
+                <ScalarProperty Name="Characteristics" ColumnName="Characteristics" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
